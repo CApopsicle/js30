@@ -1,0 +1,19 @@
+{
+  "name": "js30",
+  "version": "1.0.0",
+  "description": "practicing wesBos's javascript 30 course",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^4.16.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kelly Su",
+  "license": "ISC"
+}
