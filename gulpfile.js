@@ -1,8 +1,14 @@
 const gulp = require('gulp');
+const gulpWebServer = require('gulp-webserver');
 
-gulp.task('default', defaultTask);
+gulp.task('default', ['sass', 'js', 'webserver']);
 
-function defaultTask(done) {
-  // place code for your default task here
-  done();
-}
+gulp.task('webserver', () => {
+  gulp.src('./')
+    .pipe(gulpWebServer({
+      livereload: true,
+      directoryListing: true,
+      open: true,
+    }));
+});
+
