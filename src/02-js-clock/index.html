@@ -9,11 +9,23 @@
 
     <div class="clock">
       <div class="clock-face">
-        <p class="numbers 1">1</p>
-        <p class="numbers 2">2</p>
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
+      </div>
+      <div class="center">
+        <p class="numbers">3</p>
+        <p class="numbers">4</p>
+        <p class="numbers">5</p>
+        <p class="numbers">6</p>
+        <p class="numbers">7</p>
+        <p class="numbers">8</p>
+        <p class="numbers">9</p>
+        <p class="numbers">10</p>
+        <p class="numbers">11</p>
+        <p class="numbers">12</p>
+        <p class="numbers">1</p>
+        <p class="numbers">2</p>
       </div>
     </div>
 
@@ -70,6 +82,16 @@
       transition-timing-function: cubic-bezier(.17,.67,.48,1.07);
     }
 
+    .center {
+      width: 1rem;
+      height: 1rem;
+      background-color: red;
+      position: absolute;
+      top: 16.5rem;
+      left: 16.5rem;
+      border-radius: 1rem;
+    }
+
     .hour-hand {
       width: 30%;
       left: 20%;
@@ -77,11 +99,21 @@
       transform: translateX(20%);
     }
 
+    .min-hand {
+      width: 40%;
+      left: 10%;
+      transform-origin: 100%;
+      transform: translateX(10%);
+    }
+
     .numbers {
       font-size: 30px;
       position: absolute;
       left: 0;
       top: 0;
+      margin: 0;
+      line-height: 30px;
+      color: #ffffff;
     }
 
   </style>
@@ -109,8 +141,14 @@
 
     const nums = Array.from(Array(12).keys());
     const numbers = document.querySelectorAll('.numbers');
-    numbers.forEach((el, idx) => {
-      el.style.top = '100px';
+    const radius = 15; // (rem)
+
+    nums.forEach((el, idx) => {
+      const height = Math.sin((idx / 12) * Math.PI * 2) * radius;
+      const width = Math.cos((idx / 12) * Math.PI * 2) * radius;
+      console.log(height, width);
+      numbers[idx].style.top = `${height - 0.3}rem`;
+      numbers[idx].style.left = `${width - 0.3}rem`;
     });
 
     setInterval(setDate, 1000);
